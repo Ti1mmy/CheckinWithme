@@ -39,6 +39,18 @@ dmfailed = discord.Embed(
     color=discord.Color.from_rgb(240, 71, 71)
 )
 
+day_of_week = datetime.datetime.today().weekday() #returns a number from 0 to 6
+daily_motivation = [
+    "Hey, I know it's Monday. But it's also a new day and a new week. And in that lies a new opportunity for something special to happen.",
+    "Tuesday isn't so bad... It's a sign that I've somehow survived Monday.",
+    "Wednesday is like small friday; half way to the weekend.",
+    "Thankful Thursday, it's not happy people who are thankful. It's thankful people who are happy. Always look on the bright side of life",
+    "TGIF!", #can add later probably
+    "Happy Saturday.",
+    "Sunday: A day to refuel your soul and be grateful for your blessings. Take a deep breath and realx. Enjoy your family, your friends and a cup of coffee."
+]
+days_of_the_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+
 
 # Static
 
@@ -119,23 +131,23 @@ async def rate(ctx,*,message):
 @bot.command(pass_context=True) # Shows the list of commands the user can use
 async def commands(ctx):
     embed = discord.Embed(title="List of Commands", description="To use these commands, type '>' with the corresponding command.", timestamp=datetime.datetime.utcnow(), color=discord.Color.from_rgb(226, 83, 47))
-    embed.add_field(name="checkin", value="""Let me know how you're feeling with the 'checkin' command!\nFor instance, you could type `>checkin I'm feeling pretty happy today` or any other feelings you have. 
-    Your mood will then be categorized into one of four categories (anger, fear, joy, and sadness) and will be compiled in a weekly summary for you to view at anytime.""")
+    embed.add_field(name="checkin", value="""> Let me know how you're feeling with the 'checkin' command! For instance, you could type `>checkin I'm feeling pretty happy today` or any other feelings you have.\n\n""" + 
+                    """> Your mood will then be categorized into one of four categories (anger, fear, joy, and sadness) and will be compiled in a weekly summary for you to view at anytime.""")
     embed.add_field(name='\u200b', value='\u200b')
     embed.add_field(name='\u200b', value='\u200b')
+    
+    embed.add_field(name="rate", value="""> You can also let me know how you are feeling with the 'rate' command! Please include one of the following: `| Anger | Fear | Joy | Sadness |` with the command.\n\n""" + 
+                    """> This provides a more direct and accurate method for our systems to track your mood.""")
+    
+    embed.add_field(name='\u200b', value='\u200b')                
+    embed.add_field(name='\u200b', value='\u200b')
+    
+    embed.add_field(name="motivation", value="> Sends motivational messages to cheer you on to bigger and better.")
+    embed.add_field(name='\u200b', value='\u200b')
+    embed.add_field(name='\u200b', value='\u200b')
+    
+    embed.add_field(name="resource", value="> Generates a random resource to help you develop your mental health!")
 
-    embed.add_field(name="rate", value="""You can also let me know how you are feeling with the 'rate' command! Please include one of the following: | Anger | Fear | Joy | Sadness | with the command.
-    This provides a more direct and accurate method for our systems to track your mood.""")
-    embed.add_field(name='\u200b', value='\u200b')
-    embed.add_field(name='\u200b', value='\u200b')
-
-    embed.add_field(name="motivation", value="Sends motivational messages to cheer you on to bigger and better.")
-    embed.add_field(name='\u200b', value='\u200b')
-    embed.add_field(name='\u200b', value='\u200b')
-
-    embed.add_field(name="resource", value="Generates a random resource to help you develop your mental health!")
-    embed.add_field(name='\u200b', value='\u200b')
-    embed.add_field(name='\u200b', value='\u200b')
     embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845318994666848261/845399136249053205/logo_guy.png")
     await ctx.send(embed=embed)
 
@@ -170,7 +182,25 @@ async def on_guild_join(guild):
         guild.me: discord.PermissionOverwrite(send_messages=True),
     }
     await guild.create_text_channel('daily-check-in', overwrites=overwrites)   
+    channel_id = discord.utils.get(guild.channels, name='daily-check-in').id
+    channel = bot.get_channel(channel_id)
     update_announcement_list()
+    embed = discord.Embed(title="Hello World! 👋", description="""My name is Pip and I'm here to help you track your moods on the daily.""", timestamp=datetime.datetime.utcnow(), color=discord.Color.from_rgb(255, 255, 77))
+    embed.add_field(name="How I work", value="> All you have to do is tell me how you're doing each day by sending me a message, and a graphic from the last seven days will be compiled for you to view at anytime." +
+    " Understanding and monitoring your moods is crucial to managing them and feeling better faster. If you are more aware of your moods, you may be able to better manage your lifestyle choices, " +
+    "make informed health decisions, prevent or avoid triggers of negative moods, and work towards a better quality of life. Best of luck on your mental health journey!" +
+    "\nTo see a list of commands, type `>commands`!")
+    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845318994666848261/845399136249053205/logo_guy.png")
+    await channel.send(embed=embed)
+
+
+    embed = discord.Embed(title=f"⭐ Happy {days_of_the_week[day_of_week]}! ⭐", description="> Yesterday is history. Tomorrow is a mystery, but today is a gift! That is why it is called the present.", timestamp=datetime.datetime.utcnow(), color=discord.Color.from_rgb(221, 160, 51))
+    embed.add_field(name="Check in With Me!", value=f"{bot_tag.mention}")
+    embed.add_field(name='\u200b', value='\u200b')
+    embed.add_field(name='\u200b', value='\u200b')
+    embed.add_field(name="Daily Motivation", value=daily_motivation[day_of_week])
+    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845318994666848261/845399136249053205/logo_guy.png")
+    await channel.send(embed=embed)
 
 
 @bot.event
@@ -183,8 +213,6 @@ async def on_ready():
     print('Bot Initialized')
 
 
-
-
 @bot.listen()
 async def on_message(message):
     message_content = message.content
@@ -195,34 +223,13 @@ async def on_message(message):
         return None
 
 
-@bot.listen()
-async def on_message(message):
-    content = message.content
-    try:
-        if content == ">dm" and not message.author.bot:
-            message.author.send("response")
-    except TypeError:
-        return None
-
 # Tasks
 
 
-@tasks.loop(seconds=10)
-async def checkin_announcement():
-    day_of_week = datetime.datetime.today().weekday() #returns a number from 0 to 6
-    daily_motivation = [
-        "Hey, I know it's Monday. But it's also a new day and a new week. And in that lies a new opportunity for something special to happen.",
-        "Tuesday isn't so bad... It's a sign that I've somehow survived Monday.",
-        "Wednesday is like small friday; half way to the weekend.",
-        "Thankful Thursday, it's not happy people who are thankful. It's thankful people who are happy. Always look on the bright side of life",
-        "TGIF!", #can add later probably
-        "Happy Saturday.",
-        "Sunday: A day to refuel your soul and be grateful for your blessings. Take a deep breath and realx. Enjoy your family, your friends and a cup of coffee."
-    ]
-    days_of_the_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-    
+@tasks.loop(seconds=60)
+async def checkin_announcement():   
     for channel in announcement_channels_list:
-        embed = discord.Embed(title=f"⭐Happy {days_of_the_week[day_of_week]}!⭐", description="Yesterday is history. Tomorrow is a mystery, but today is a gift! That is why it is called the present.", timestamp=datetime.datetime.utcnow(), color=discord.Color.from_rgb(221, 160, 51))
+        embed = discord.Embed(title=f"⭐ Happy {days_of_the_week[day_of_week]}! ⭐", description="> Yesterday is history. Tomorrow is a mystery, but today is a gift! That is why it is called the present.", timestamp=datetime.datetime.utcnow(), color=discord.Color.from_rgb(221, 160, 51))
         embed.add_field(name="Check in With Me!", value=f"{bot_tag.mention}")
         embed.add_field(name='\u200b', value='\u200b')
         embed.add_field(name='\u200b', value='\u200b')
