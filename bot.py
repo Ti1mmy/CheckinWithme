@@ -17,7 +17,7 @@ announcement_channels_list = []
 
 try:
     #  conf = json.load(open("config.json"))
-    with open('config.json') as config_file:
+    with open('config/config.json') as config_file:
         conf = json.load(config_file)
     if conf['token'] is None:
         raise Exception
@@ -119,21 +119,21 @@ async def rate(ctx,*,message):
 @bot.command(pass_context=True) # Shows the list of commands the user can use
 async def commands(ctx):
     embed = discord.Embed(title="List of Commands", description="To use these commands, type '>' with the corresponding command.", timestamp=datetime.datetime.utcnow(), color=discord.Color.from_rgb(226, 83, 47))
-    embed.add_field(name=">checkin", value="Let me know how you're feeling with >checkin!\nIf I'm feeling happy, I would do \n`>checkin I'm feeling pretty happy` 😊")
-    # Change to mention the bot and tell user to send the bot a dm
+    embed.add_field(name="checkin", value="""Let me know how you're feeling with the 'checkin' command!\nFor instance, you could type `>checkin I'm feeling pretty happy today` or any other feelings you have. 
+    Your mood will then be categorized into one of four categories (anger, fear, joy, and sadness) and will be compiled in a weekly summary for you to view at anytime.""")
     embed.add_field(name='\u200b', value='\u200b')
     embed.add_field(name='\u200b', value='\u200b')
 
-    embed.add_field(name=">rate", value="You can also let me know how you are feeling with >rate!")
-    embed.add_field(name='\u200b', value='\u200b')
-    embed.add_field(name="Usage:", value="`>rate <Anger | Fear | Joy | Sadness>`")
-    embed.add_field(name='\u200b', value='\u200b')
-
-    embed.add_field(name=">motivation", value="Some motivational messages for when you're down.")
+    embed.add_field(name="rate", value="""You can also let me know how you are feeling with the 'rate' command! Please include one of the following: | Anger | Fear | Joy | Sadness | with the command.
+    This provides a more direct and accurate method for our systems to track your mood.""")
     embed.add_field(name='\u200b', value='\u200b')
     embed.add_field(name='\u200b', value='\u200b')
 
-    embed.add_field(name=">resource", value="A random resource to help you develop your mental health!")
+    embed.add_field(name="motivation", value="Sends motivational messages to cheer you on to bigger and better.")
+    embed.add_field(name='\u200b', value='\u200b')
+    embed.add_field(name='\u200b', value='\u200b')
+
+    embed.add_field(name="resource", value="Generates a random resource to help you develop your mental health!")
     embed.add_field(name='\u200b', value='\u200b')
     embed.add_field(name='\u200b', value='\u200b')
     embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845318994666848261/845399136249053205/logo_guy.png")
@@ -195,12 +195,14 @@ async def on_message(message):
         return None
 
 
-@bot.command()
-async def dm(ctx):
+@bot.listen()
+async def on_message(message):
+    content = message.content
     try:
-        await ctx.author.send('Hey')
-    except discord.Forbidden:
-        await ctx.send(embed=dmfailed)
+        if content == ">dm" and not message.author.bot:
+            message.author.send("response")
+    except TypeError:
+        return None
 
 # Tasks
 
@@ -217,16 +219,17 @@ async def checkin_announcement():
         "Happy Saturday.",
         "Sunday: A day to refuel your soul and be grateful for your blessings. Take a deep breath and realx. Enjoy your family, your friends and a cup of coffee."
     ]
+    days_of_the_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    
     for channel in announcement_channels_list:
-        days_of_the_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
         embed = discord.Embed(title=f"⭐Happy {days_of_the_week[day_of_week]}!⭐", description="Yesterday is history. Tomorrow is a mystery, but today is a gift! That is why it is called the present.", timestamp=datetime.datetime.utcnow(), color=discord.Color.from_rgb(221, 160, 51))
         embed.add_field(name="Check in With Me!", value=f"{bot_tag.mention}")
         embed.add_field(name='\u200b', value='\u200b')
         embed.add_field(name='\u200b', value='\u200b')
-        embed.add_field(name="Example", value="If I'm feeling happy, I would `>rate Joy` 😊")
         embed.add_field(name="Daily Motivation", value=daily_motivation[day_of_week])
         embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845318994666848261/845399136249053205/logo_guy.png")
         await channel.send(embed=embed)
+
 
 checkin_announcement.start()
 bot.run(token)
