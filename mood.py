@@ -11,10 +11,6 @@ ta = ToneAnalyzerV3(version='2017-09-21', authenticator=watson_authenticator)
 ta.set_service_url(watson_setup['url'])
 
 
-moods = {
-    
-}
-
 language_tones = ['analytical', 'confident', 'tentative']
 
 
@@ -34,8 +30,4 @@ def tone_result(message):
         return None
     else:
         return most_confident_score
-
-
-def get_mood_rating(most_confident_mood):
-    # Moods: Anger, Fear, Joy, Sadness
-    pass
+        
