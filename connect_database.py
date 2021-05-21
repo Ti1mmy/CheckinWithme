@@ -7,7 +7,7 @@ import json
 from time import gmtime, strftime
 import datetime
 
-with open('config.json', 'r') as config:
+with open('config/config.json', 'r') as config:
     conf = json.load(config)
     
 cloud_config = {}

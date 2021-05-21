@@ -3,8 +3,7 @@ from ibm_watson import ToneAnalyzerV3
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 import datetime
 
-#  watson_setup = json.load(open("watson.json"))
-with open('watson.json') as json_file:
+with open('config/watson.json') as json_file:
     watson_setup = json.load(json_file)
 watson_authenticator = IAMAuthenticator(watson_setup['API_key'])
 ta = ToneAnalyzerV3(version='2017-09-21', authenticator=watson_authenticator)

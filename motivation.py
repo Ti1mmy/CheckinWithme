@@ -13,7 +13,7 @@ def get_motivation():
     return res['data']['children'][random.randrange(0, int(limit))-1]['data']['url']
     
 
-with open("reddit_keys.json") as temp_file:
+with open("config/reddit_keys.json") as temp_file:
     reddit_keys = json.load(temp_file)
 
 auth = rq.auth.HTTPBasicAuth(reddit_keys['personal_use'], reddit_keys['secret'])
