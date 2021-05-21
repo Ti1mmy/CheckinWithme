@@ -15,6 +15,8 @@ moods = {
     
 }
 
+language_tones = ['analytical', 'confident', 'tentative']
+
 
 def save_result(result):
     pass
@@ -24,9 +26,16 @@ def tone_result(message):
     most_confident_score = {'score': 0}
     
     for tone in results['document_tone']['tones']:
-        if tone['score'] > most_confident_score['score']:
-            most_confident_score = tone
+        if tone['tone_id'] not in language_tones:
+            # Ignore language indicators
+            if tone['score'] > most_confident_score['score']:
+                most_confident_score = tone
     if most_confident_score == {'score': 0}:
         return None
     else:
         return most_confident_score
+
+
+def get_mood_rating(most_confident_mood):
+    # Moods: Anger, Fear, Joy, Sadness
+    pass

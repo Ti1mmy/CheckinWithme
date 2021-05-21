@@ -4,7 +4,7 @@ from cassandra.cluster import Cluster, ExecutionProfile, EXEC_PROFILE_DEFAULT
 from cassandra.policies import WhiteListRoundRobinPolicy, DowngradingConsistencyRetryPolicy
 from cassandra.query import tuple_factory
 import json
-from datetime import date
+from time import gmtime, strftime
 
 with open('config.json', 'r') as config:
     conf = json.load(config)
@@ -18,20 +18,18 @@ session = cluster.connect('my_moods')
 
 # row = session.execute("select title from movies_and_tv")
 
-def update_mood(uuid: int, mood: float):
-    today = str(date.today())
+def update_mood(uuid: int, mood: str):
+    today = strftime("%Y-%m-%d %H:%M:%S", gmtime())
     session.execute(f"""
                     CREATE TABLE IF NOT EXISTS user{uuid} (
                         date text,
-                        mood decimal,
+                        mood text,
                         PRIMARY KEY (date, mood)
                     )
                     """)
-    session.execute(f"INSERT INTO user{uuid} (date, mood) VALUES ('{today}', {mood})")
+    session.execute(f"INSERT INTO user{uuid} (date, mood) VALUES ('{today}', '{mood}')")
 
-update_mood(330159366999244800, 0.738)
-
-my_moods = session.execute('select (date, mood) from user330159366999244800')
+my_moods = session.execute('select (date, mood) from user215212898778218496')
 
 for thing in my_moods:
     print(thing)

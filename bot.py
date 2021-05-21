@@ -5,6 +5,9 @@ import datetime
 from pytz import timezone
 import json
 from mood import tone_result
+import random
+from motivation import get_motivation
+from connect_database import update_mood
 
 TEST = True
 
@@ -73,29 +76,65 @@ async def checkin(ctx,*,message):
     tone = tone_result(message)
     # save_result(tone)
     if tone:
+        my_tone = tone['tone_id']
+        update_mood(ctx.message.author.id, my_tone)
         await ctx.send(tone)
     else:
-        await ctx.send("Sorry! I couldn't exactly pinpoint your mood. Rate how you feel from a scale of 1-10 (using the >rate command).")
+        embed = discord.Embed(title="Oops!", description="Sorry! I couldn't quite pinpoint how you are feeling. Feel free to send me another message and I'll try to figure out how you are feeling!", timestamp=datetime.datetime.utcnow(), color=discord.Color.from_rgb(0, 128, 128))
+        embed.add_field(name=">rate", value="You can also let me know how you are feeling with >rate!")
+        embed.add_field(name='\u200b', value='\u200b')
+        embed.add_field(name="Usage:", value="`>rate <Anger | Fear | Joy | Sadness>`")
+        embed.add_field(name='\u200b', value='\u200b')
+        embed.add_field(name='\u200b', value='\u200b')
+        embed.add_field(name="Example", value="If I'm feeling happy, I would `>rate Joy` 😊")
+        embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845318994666848261/845399136249053205/logo_guy.png")
+        await ctx.send(embed=embed)
 
     # do something about mood    
 
 
 @bot.command(pass_context=True)
 async def rate(ctx,*,message):
-    rating = tone_result(message)
+    rating = message.strip().lower()
+    if rating in ["anger", "fear", 'joy', 'sadness']:
+        tone = tone_result(rating)
+        my_tone = tone['tone_id']
+        update_mood(ctx.message.author.id, my_tone)
+        await ctx.send(tone)
+    else:
+        embed = discord.Embed(title="Oops!", description="Sorry! I couldn't quite pinpoint how you are feeling. Feel free to send me another message and I'll try to figure out how you are feeling!", timestamp=datetime.datetime.utcnow(), color=discord.Color.from_rgb(0, 128, 128))
+        embed.add_field(name="Usage:", value="`>rate <Anger | Fear | Joy | Sadness>`")
+        embed.add_field(name='\u200b', value='\u200b')
+        embed.add_field(name='\u200b', value='\u200b')
+        embed.add_field(name="Example", value="If I'm feeling happy, I would `>rate Joy` 😊")
+        embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845318994666848261/845399136249053205/logo_guy.png")
+        await ctx.send(embed=embed)
     # save_result(rating)
-
+    
     # do something about mood
 
 
+@bot.command(pass_context=True) # Shows the list of commands the user can use
+async def commands(ctx):
+    
+    embed = discord.Embed(title="List of Commands", description="To use these commands, type '>' with the corresponding command.", timestamp=datetime.datetime.utcnow(), color=discord.Color.from_rgb(0, 128, 128))
+    embed.add_field(name=">rate", value="You can also let me know how you are feeling with >rate!")
+    embed.add_field(name='\u200b', value='\u200b')
+    embed.add_field(name="Usage:", value="`>rate <Anger | Fear | Joy | Sadness>`")
+    embed.add_field(name='\u200b', value='\u200b')
+    embed.add_field(name='\u200b', value='\u200b')
+    embed.add_field(name="Example", value="If I'm feeling happy, I would `>rate Joy` 😊")
+    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845318994666848261/845399136249053205/logo_guy.png")
+    await ctx.send(embed=embed)
+
+
 @bot.command()
-async def test(ctx, arg):
-    await ctx.send(arg)
-
-"""@bot.command()
 async def motivation(ctx):
-    motivational_message = []   """
+    motivation_url = get_motivation()
+    await ctx.send(motivation_url)
 
+    #  motivational_messages = ["You're cool!"]   #add more later
+    #  await ctx.send(random.choice(motivational_messages))
 
 # Events
 
@@ -129,10 +168,15 @@ async def on_message(message):
 
 @tasks.loop(seconds=30)
 async def checkin_announcement():
-   
+    day_of_week = datetime.datetime.today().weekday()
     for channel in announcement_channels_list:
-        print(channel)
-        await channel.send("This announcement was scheduled to send every 10 seconds")
+        embed = discord.Embed(title=f"⭐Happy {day_of_week}!⭐", description="", timestamp=datetime.datetime.utcnow(), color=discord.Color.from_rgb(255, 223, 0))
+        embed.add_field(name="Usage:", value="`>rate <Anger | Fear | Joy | Sadness>`")
+        embed.add_field(name='\u200b', value='\u200b')
+        embed.add_field(name='\u200b', value='\u200b')
+        embed.add_field(name="Example", value="If I'm feeling happy, I would `>rate Joy` 😊")
+        embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845318994666848261/845399136249053205/logo_guy.png")
+        await ctx.send(embed=embed)
 
 checkin_announcement.start()
 bot.run(token)
