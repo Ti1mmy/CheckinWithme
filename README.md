@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/Ti1mmy/CheckinWithme">
-    <img src="resource/logo.png" alt="Logo" width="375" height="375">
+    <img src="resource/logo.png" alt="Logo" width="300" height="400">
   </a>
 
   <h3 align="center">CheckinWithme</h3>
