@@ -81,29 +81,29 @@ To get a local copy up and running follow these simple steps.
 This is an example of how to list things you need to use the software and how to install them.
 * Python `3.9`, `pip3`
 1. Update before installing new packages
-  ```sh
-  sudo apt-get update
-  ```
+   ```sh
+   sudo apt-get update
+   ```
 2. Check Python version
-  ```sh
-  python3 --version
-  ```
+   ```sh
+   python3 --version
+   ```
 3. If Python version < `3.9`
-  ```sh
-  sudo apt install python3.9
-  ```
+   ```sh
+   sudo apt install python3.9
+   ```
 4. Validate
-  ```sh
-  python3.9 --version
-  ```
+   ```sh
+   python3.9 --version
+   ```
 5. Install `pip3`
-  ```sh
-  sudo apt-get -y install python3-pip
-  ```
+   ```sh
+   sudo apt-get -y install python3-pip
+   ```
 6. Validate
-  ```sh
-  pip3 --version
-  ```
+   ```sh
+   pip3 --version
+   ```
 
 
 ### Installation
