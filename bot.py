@@ -263,6 +263,7 @@ async def checkin_announcement():
     """
     Sends a reminder every 24 hours to users to remind them to checkin and track their mood
     """
+    day_of_week = datetime.datetime.today().weekday()
     for channel in announcement_channels_list:
         embed = discord.Embed(title=f"⭐ Happy {days_of_the_week[day_of_week]}! ⭐", description="> Yesterday is history. Tomorrow is a mystery, but today is a gift! That is why it is called the present.", timestamp=datetime.datetime.utcnow(), color=discord.Color.from_rgb(221, 160, 51))
         embed.add_field(name="Check in With Me!", value=f"{bot_tag.mention}")

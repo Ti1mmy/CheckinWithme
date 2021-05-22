@@ -3,13 +3,10 @@ import random
 import requests as rq
 
 def get_motivation():
-    limit = '15'
-
     res = rq.get("https://oauth.reddit.com/r/GetMotivated/top/?t=week?",   # gets top 15 posts of week
-                headers=headers,
-                params={'limit': limit}).json()
+                headers=headers).json()
 
-    return res['data']['children'][random.randrange(0, int(limit))-1]['data']['url']   # randomly grabs one
+    return res['data']['children'][random.randrange(0, len(res['data']['children']))-1]['data']['url']   # randomly grabs one
     
 
 with open("config/reddit_keys.json") as temp_file:
