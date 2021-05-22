@@ -216,3 +216,5 @@ Project Link: [https://github.com/Ti1mmy/CheckinWithme](https://github.com/Ti1mm
 * Pip's avatar from [Canva](https://www.canva.com/), use granted through Pro subscription
 * [MLH Mental Health Hacks](https://organize.mlh.io/participants/events/6797-mental-health-hacks)
 
+* [MLH Mental Health Hacks](https://organize.mlh.io/participants/events/6797-mental-health-hacks)
+

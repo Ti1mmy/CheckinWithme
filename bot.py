@@ -75,7 +75,7 @@ def update_announcement_list():
 
 # Commands
 
-"""
+
 @bot.command()
 async def ping(ctx):
     await ctx.send('pong')
@@ -87,7 +87,7 @@ async def pingdm(ctx):
         await ctx.author.send('pong')
     except discord.Forbidden:
         await ctx.send(embed=dmfailed)
-"""
+
 
 @bot.command(pass_context=True)
 async def checkin(ctx,*,message):
@@ -235,6 +235,8 @@ async def on_guild_join(guild):
 
 @bot.event
 async def on_ready():
+    if not os.path.exists('process'):
+        os.mkdir('process')
     await bot.change_presence(activity=discord.Game("Let's check in! | prefix: >"), status="online")
     global bot_tag
     bot_tag = bot.user
