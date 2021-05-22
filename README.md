@@ -79,13 +79,34 @@ To get a local copy up and running follow these simple steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
+* Python `3.9`, `pip3`
+1. Update before installing new packages
   ```sh
-  npm install npm@latest -g
+  sudo apt-get update
+  ```
+2. Check Python version
+  ```sh
+  python3 --version
+  ```
+3. If Python version < `3.9`
+  ```sh
+  sudo apt install python3.9
+  ```
+4. Validate
+  ```sh
+  python3.9 --version
+  ```
+5. Install `pip3`
+  ```sh
+  sudo apt-get -y install python3-pip
+  ```
+6. Validate
+  ```sh
+  pip3 --version
   ```
 
+
 ### Installation
-* Requirements: Python `3.9.4`, `pip3`
 
 1. Clone the repo
    ```sh
@@ -98,9 +119,9 @@ This is an example of how to list things you need to use the software and how to
 3. Configure DataStaxAstra Database
     * Initialize CQL Database with keyspace `my_moods`
     * Click on **Connect** in initialized database. Add `secure-connect-database-name.zip` to main directory.
-3. Add tokens to `config.py`
+4. Add tokens to `config/config.py`
     * Bot tokens for Discord can be found in the [Discord Developer Portal](https://discord.com/developers/docs/intro). 
-    * Copy [tokens](https://astra.datastax.com/settings/tokens) from DataStax Astra Database into `config.json`
+    * Copy [tokens](https://astra.datastax.com/settings/tokens) from DataStax Astra Database into `config/config.json`
    
    ```json
    {
@@ -114,16 +135,19 @@ This is an example of how to list things you need to use the software and how to
    "CLIENT_SECRET":"",
    }
    ```
-4. Add tokens for Reddit and IBM Watson Tone Analysis
+5. Add tokens for Reddit and IBM Watson Tone Analysis to `config/reddit_keys.json`, `config/watson.json`
     * Create an application using a Reddit account [here](https://www.reddit.com/prefs/apps) to find the required tokens
     * Create an IBM Watson Tone Analyzer instance [here](https://cloud.ibm.com/catalog/services/tone-analyzer) and import the API key and url
    
    ```json
+   // reddit_keys.json
    {
    "_Reddit": "Import Application Tokens Below:",
    "personal_use": "",
    "secret": ""
    }
+
+   // watson.json
    {
    "Watson Tone Recognition AI": "Import API key and URL below:",
    "API_key": "",
