@@ -90,8 +90,11 @@ async def pingdm(ctx):
 
 @bot.command(pass_context=True)
 async def checkin(ctx,*,message):
+    """
+    Determines the user's mood by using IBM Watson's tone reader,
+    and uploads it to the database.
+    """
     tone = tone_result(message)
-    # save_result(tone)
     if tone:
         my_tone = tone['tone_id']
         update_mood(ctx.message.author.id, my_tone)
@@ -107,13 +110,12 @@ async def checkin(ctx,*,message):
         embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845318994666848261/845399136249053205/logo_guy.png")
         await ctx.send(embed=embed)
 
-    # do something about mood    
-
 
 @bot.command(pass_context=True)
 async def rate(ctx,*,message):
     """
-    
+    When the tone reader fails to determine a mood, the user can
+    simply enter their mood to update the database.
     """
     rating = message.strip().lower()
     if rating in ["anger", "fear", 'joy', 'sadness']:
@@ -134,7 +136,7 @@ async def rate(ctx,*,message):
 @bot.command(pass_context=True)
 async def commands(ctx):
     """
-    Sends a list of commands the user can use
+    Sends a list of the commands a user can use
     """
     embed = discord.Embed(title="List of Commands", description="To use these commands, type '`>`' with the corresponding command.", timestamp=datetime.datetime.utcnow(), color=discord.Color.from_rgb(226, 83, 47))
     embed.add_field(name="checkin", value="""> Let me know how you're feeling with the 'checkin' command! For instance, you could type `>checkin I'm feeling pretty happy today` or any other feelings you have.\n\n""" + 

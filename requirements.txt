@@ -1,0 +1,8 @@
+cassandra-driver==3.25.0
+DateTime==4.3
+discord==1.0.1
+discord.py==1.7.2
+ibm-cloud-sdk-core==3.10.0
+ibm-watson==5.1.0
+Pillow==8.2.0
+requests==2.25.1

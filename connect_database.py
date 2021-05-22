@@ -13,9 +13,9 @@ with open('config/config.json', 'r') as config:
 cloud_config = {}
 cloud_config['secure_connect_bundle'] = conf['secure_connect_bundle']
 
-auth_provider = PlainTextAuthProvider(conf["CLIENT_ID"], conf["CLIENT_SECRET"])
+auth_provider = PlainTextAuthProvider(conf["CLIENT_ID"], conf["CLIENT_SECRET"]) # authenticate
 cluster = Cluster(cloud=cloud_config, auth_provider=auth_provider)
-session = cluster.connect('my_moods')
+session = cluster.connect('my_moods') # select keyspace
 
 # row = session.execute("select title from movies_and_tv")
 
@@ -54,7 +54,7 @@ def get_moods(uuid: int) -> list:
         mood_date = datetime.datetime.strptime(mood.date__mood[0], "%Y-%m-%d %H:%M:%S").date()   # gets date of entry (no time)
         diff_days = (current_date - mood_date).days    # finds time diff
 
-        if diff_days <= 7 and diff_days != 0: 
+        if diff_days <= 7 and diff_days != 0:    # everything that is less than 7 days is appended based on diff
             moodlist[diff_days-1].append(mood.date__mood[1])
 
     return moodlist

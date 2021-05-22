@@ -27,7 +27,7 @@ def draw_block(start, difference, moods):
 
 
 def weekly_moods(moods: list, uuid: int):   # uuid is passed as a string
-    colours = {'anger': 'red', 'fear': 'yellow', 'joy': 'aqua', 'sadness': 'blue', 'confident': 'orange', 'tentative': 'green', 'analytical': 'pink'}   # defines colours of bars
+    colours = {'anger': 'red', 'fear': 'yellow', 'joy': 'aqua', 'sadness': 'blue'}   # defines colours of bars (missing 'confident': 'orange', 'tentative': 'green', 'analytical': 'pink')
     lower = 260   # lower is the bottom coord of bar, upper is top but it changes
     upper = 167
     difference = 93   # difference between the 2 sides of the boxes
