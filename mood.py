@@ -1,7 +1,8 @@
-import json
-from ibm_watson import ToneAnalyzerV3
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
-import datetime
+from ibm_watson import ToneAnalyzerV3
+
+import json
+
 
 with open('config/watson.json') as json_file:
     watson_setup = json.load(json_file)
@@ -13,10 +14,7 @@ ta.set_service_url(watson_setup['url'])
 language_tones = ['analytical', 'confident', 'tentative']
 
 
-def save_result(result):
-    pass
-
-def tone_result(message):
+def tone_result(message: str) -> dict:
     results = ta.tone(message).get_result()
     most_confident_score = {'score': 0}
     

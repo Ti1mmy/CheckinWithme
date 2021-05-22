@@ -1,7 +1,6 @@
-import requests as rq
 import json
 import random
-
+import requests as rq
 
 def get_motivation():
     limit = '15'

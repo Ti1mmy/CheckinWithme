@@ -1,24 +1,25 @@
 #!/usr/bin/env python3
-import discord
-from discord.ext import commands, tasks
-import datetime
-from pytz import timezone
-import json
-from mood import tone_result
-import random
 from motivation import get_motivation
 from connect_database import update_mood, get_moods
+from mood import tone_result
 from weekly_mood import weekly_moods
+
+import discord
+from discord.ext import commands, tasks
+
+import datetime
+import json
+import random
 import os
+
+# ---
 
 TEST = True
 
 announcement_channels_list = []
 
 
-
 try:
-    #  conf = json.load(open("config.json"))
     with open('config/config.json') as config_file:
         conf = json.load(config_file)
     if conf['token'] is None:
@@ -41,14 +42,14 @@ dmfailed = discord.Embed(
     color=discord.Color.from_rgb(240, 71, 71)
 )
 
-day_of_week = datetime.datetime.today().weekday() #returns a number from 0 to 6
+day_of_week = datetime.datetime.today().weekday() # returns a number from 0 to 6
 daily_motivation = [
     "Hey, I know it's Monday. But it's also a new day and a new week. And in that lies a new opportunity for something special to happen.",
     "Tuesday isn't so bad... It's a sign that I've somehow survived Monday.",
     "Wednesday is like small friday; half way to the weekend.",
     "Thankful Thursday, it's not happy people who are thankful. It's thankful people who are happy. Always look on the bright side of life",
-    "TGIF!", #can add later probably
-    "Happy Saturday.",
+    "TGIF!",
+    "Saturday - it's a good day to have a good day!",
     "Sunday: A day to refuel your soul and be grateful for your blessings. Take a deep breath and realx. Enjoy your family, your friends and a cup of coffee."
 ]
 days_of_the_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
@@ -156,12 +157,16 @@ async def commands(ctx):
 
 @bot.command()
 async def motivation(ctx):
+    
     motivation_url = get_motivation()
     await ctx.send(motivation_url)
 
 
 @bot.command()
 async def resource(ctx):
+    """
+    Returns a random resource from a list of mental health resources
+    """
     resources = [
         "https://www.mindful.org/",
         "https://www.youtube.com/watch?v=inpok4MKVLM",
