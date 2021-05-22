@@ -20,7 +20,6 @@ def draw_block(start, difference, moods):
 
     for i in range(len(daily_moods)):
         lower_x = start + (increment * (i+1))
-        print(f"{mood_count[daily_moods[i]]} {highest}")
         y_coord = (1 - (mood_count[daily_moods[i]] / highest)) * 93
         coord_list.append([lower_x, y_coord])
 
@@ -34,7 +33,7 @@ def weekly_moods(moods, uuid):   #uuid is passed as a string
     difference = 93
     blocks = [857, 722, 586, 450, 313, 176, 44]
 
-    back = Image.open("grey_back.png")
+    back = Image.open("resource/grey_back.png")
     back_draw = ImageDraw.Draw(back)
 
     for i in range(len(blocks)):
@@ -44,4 +43,4 @@ def weekly_moods(moods, uuid):   #uuid is passed as a string
             for j in range(len(daily_moods)):
                 back_draw.rectangle((coords[j][0]+1, upper + coords[j+1][1], coords[j+1][0], lower), fill=colours[daily_moods[j]])
 
-    back.save(f"{uuid}.png")
+    back.save(f"process/{uuid}.png")

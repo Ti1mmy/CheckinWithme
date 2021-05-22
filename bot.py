@@ -7,7 +7,9 @@ import json
 from mood import tone_result
 import random
 from motivation import get_motivation
-from connect_database import update_mood
+from connect_database import update_mood, get_moods
+from weekly_mood import weekly_moods
+import os
 
 TEST = True
 
@@ -130,7 +132,7 @@ async def rate(ctx,*,message):
 
 @bot.command(pass_context=True) # Shows the list of commands the user can use
 async def commands(ctx):
-    embed = discord.Embed(title="List of Commands", description="To use these commands, type '>' with the corresponding command.", timestamp=datetime.datetime.utcnow(), color=discord.Color.from_rgb(226, 83, 47))
+    embed = discord.Embed(title="List of Commands", description="To use these commands, type '`>`' with the corresponding command.", timestamp=datetime.datetime.utcnow(), color=discord.Color.from_rgb(226, 83, 47))
     embed.add_field(name="checkin", value="""> Let me know how you're feeling with the 'checkin' command! For instance, you could type `>checkin I'm feeling pretty happy today` or any other feelings you have.\n\n""" + 
                     """> Your mood will then be categorized into one of four categories (anger, fear, joy, and sadness) and will be compiled in a weekly summary for you to view at anytime.""")
     embed.add_field(name='\u200b', value='\u200b')
@@ -165,12 +167,29 @@ async def resource(ctx):
         "https://www.youtube.com/watch?v=inpok4MKVLM",
         "https://gratefulness.org/",
         "https://www.helpguide.org/articles/healthy-living/the-mental-health-benefits-of-exercise.htm",
-        "https://www.youtube.com/c/HealthyGamerGG/videos"
+        "https://www.youtube.com/c/HealthyGamerGG/videos",
+        "https://psychcentral.com/",
+        "https://headtohealth.gov.au/",
+        "https://www.calmsage.com/"
     ]
     resource = random.choice(resources)
     embed = discord.Embed(title="Random Resource", description=resource, timestamp=datetime.datetime.utcnow(), color=discord.Color.from_rgb(226, 83, 47))
     await ctx.send(embed=embed)
 
+
+@bot.command()
+async def graph(ctx):
+    user_id = ctx.message.author.id
+    # graphing.get_graph(user_id)
+    ctx.send(file=discord.File(f'process/{user_id}.png'))
+
+
+@bot.command()
+async def history(ctx):
+    user_id = "1215212898778218496"
+    weekly_moods(get_moods(user_id), user_id)
+    await ctx.send(file=discord.File(f'process/{user_id}.png'))   # might need to change for dms
+    os.remove(f'process/{user_id}.png')
 
 # Events
 
