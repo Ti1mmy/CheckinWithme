@@ -15,7 +15,7 @@ import os
 
 # ---
 
-TEST = True
+TEST = False
 
 announcement_channels_list = []
 
@@ -106,19 +106,18 @@ def joy_response(language):
         # Translate Title, if Language is English, Google Translate will not alter the string
 
         title=google_translate("It sounds like you're having an awesome day!", language)["translatedText"],
-        description=google_translate("""Happiness looks different for everyone, but it is often described as involving 
-        positive emotions and life satisfaction. Perhaps you've had a rough few days and things have just started 
-        to look up. Everyone experiences the ups and downs of life, but today is one of the good ones 😊.
-        """, language)["translatedText"],
-
+        description=google_translate("""Happiness looks different for everyone, but it is often described as involving """ + 
+        """positive emotions and life satisfaction. Perhaps you've had a rough few days and things have just started """ +
+        """to look up. Everyone experiences the ups and downs of life, but today is one of the good ones 😊.""", 
+        language)["translatedText"],
         timestamp=datetime.datetime.utcnow(),
         color=discord.Color.from_rgb(252, 252, 153)
     )
     embed.add_field(name=google_translate("Advice", language)["translatedText"],
-                    value=google_translate("Take the time to do something you enjoy, develop positive habits or work "
-                                           "towards one of your goals today to increase your happiness and "
-                                           "life satisfaction in the long run. "
-                                           "\nGive this article a read for tips to maintain happiness: """,
+                    value=google_translate("""Take the time to do something you enjoy, develop positive habits or work """ +
+                                           """towards one of your goals today to increase your happiness and """ +
+                                           """life satisfaction in the long run. """ +
+                                           """\nGive this article a read for tips to maintain happiness: """,
                                            language)["translatedText"])
     embed.add_field(name='\u200b', value='\u200b')
     embed.add_field(name='\u200b', value='\u200b')
@@ -182,35 +181,35 @@ def sad_response(language):
     embed.add_field(name=google_translate("Resource", language)["translatedText"],
                     value=f"[{google_translate('10 Ways to Cheer Yourself Up When You’re in a Bad Mood', language)['translatedText']}"
                           f"](https://www.lifehack.org/articles/lifestyle/10-ways-cheer-yourself-when-youre-bad-mood.html)")
-    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845318994666848261/845399136249053205/logo_guy.png")
+    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845308432666853400/845752208297427034/logo_guy_but_sad.png")
     return embed
 
 
 def anger_response(language):
     embed = discord.Embed(
         title=google_translate("I think you might be angry.", language)["translatedText"],
-        description=google_translate("""Remember that it’s perfectly reasonable to get angry. 
-        Something that can help is letting out your anger and venting; holding it in can make it worse. 
-        Try out the resource below, or use `>resource` 
-        for some more great resources to help improve your mental health.""", language)["translatedText"],
+        description=google_translate("""Remember that it’s perfectly reasonable to get angry. """ +
+        """Something that can help is letting out your anger and venting; holding it in can make it worse. """ +
+        """Try out the resource below, or use `>resource` """ +
+        """for some more great resources to help improve your mental health.""", language)["translatedText"],
         timestamp=datetime.datetime.utcnow(),
         color=discord.Color.from_rgb(251, 105, 98)
     )
     embed.add_field(name=google_translate("Resource", language)["translatedText"],
                     value=f"[{google_translate('How To Cool Off When Youre Angry', language)['translatedText']}"
                           f"](https://www.thehotline.org/resources/how-to-cool-off-when-youre-angry/)")
-    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845318994666848261/845399136249053205/logo_guy.png")
+    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845308432666853400/845752208297427034/logo_guy_but_sad.png")
     return embed
 
 
 def fear_response(language):
     embed = discord.Embed(
         title=google_translate("It looks like you’re experiencing fear/anxiety.", language)["translatedText"],
-        description=google_translate("""I totally get that life can be overwhelming and stressful. 
-        You might be able to get over your fears by trying to take a step back and distracting yourself. 
-        You can often get in your own head and make your fears worse. 
-        Try the resource below, or use `>resource` for some more great resources to help improve your mental health.""",
-                                     language)["translatedText"],
+        description=google_translate("""I totally get that life can be overwhelming and stressful. """ + 
+        """You might be able to get over your fears by trying to take a step back and distracting yourself. """ + 
+        """You can often get in your own head and make your fears worse. """ + 
+        """Try the resource below, or use `>resource` for some more great resources to help improve your mental health.""",
+        language)["translatedText"],
         timestamp=datetime.datetime.utcnow(),
         color=discord.Color.from_rgb(168, 228, 239)
     )
@@ -218,7 +217,7 @@ def fear_response(language):
                     value=f"[**{google_translate('NHS Inform', language)['translatedText']}** - "
                           f"{google_translate('Ten Ways to Fight Your Fears', language)['translatedText']}]"
                           f"(https://www.nhsinform.scot/healthy-living/mental-wellbeing/fears-and-phobias/ten-ways-to-fight-your-fears)")
-    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845318994666848261/845399136249053205/logo_guy.png")
+    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845308432666853400/845752208297427034/logo_guy_but_sad.png")
     return embed
 
 
@@ -262,7 +261,7 @@ def negative_ambiguous(language):
     embed.add_field(name='\u200b', value='\u200b')
     embed.add_field(name=google_translate("Example", language)['translatedText'],
                     value=google_translate("If I'm feeling happy, I would `>rate Joy` 😊", language)['translatedText'])
-    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845318994666848261/845399136249053205/logo_guy.png")
+    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845308432666853400/845752208297427034/logo_guy_but_sad.png")
     return embed
 
 
@@ -277,7 +276,7 @@ async def ping(ctx):
 @bot.command(pass_context=True)
 async def checkin(ctx, *, message=None):
     """
-    Determines the user's mood by using IBM Watson's tone reader
+    Determines the user's mood by using IBM Watson's tone reader & Google Cloud's Natural Language Library
     and uploads it to the database.
     """
     if message:
@@ -341,19 +340,17 @@ async def commands(ctx):
     embed = discord.Embed(title="List of Commands",
                           description="To use these commands, type '`>`' with the corresponding command.",
                           timestamp=datetime.datetime.utcnow(), color=discord.Color.from_rgb(226, 83, 47))
-    embed.add_field(name="checkin", value="""> Let me know how you're feeling with the 'checkin' command! For instance, 
-    you could type `>checkin I'm feeling pretty happy today` or any other feelings you have.\n\n""" +
-                                          """> Your mood will then be categorized into one of four categories 
-                                          (anger, fear, joy, and sadness) 
-                    and will be compiled in a weekly summary for you to view at anytime."""
+    embed.add_field(name="checkin", value="""> Let me know how you're feeling with the 'checkin' command! For """+ 
+                    """instance, you could type `>checkin I'm feeling pretty happy today` or any other feelings you have.\n\n""" +
+                    """> Your mood will then be categorized into one of four categories (anger, fear, joy, and sadness) """ +
+                    """and will be compiled in a weekly summary for you to view at anytime."""
                     )
     embed.add_field(name='\u200b', value='\u200b')
     embed.add_field(name='\u200b', value='\u200b')
 
     embed.add_field(name="rate", value="""> You can also let me know how you are feeling with the 'rate' command! 
-    Please include one of the following: ` | Anger | Fear | Joy | Sadness |` with the command.\n\n""" +
-                                       """> This provides a more direct and accurate method for our 
-                                       systems to track your mood."""
+    > Please include one of the following: `| Anger | Fear | Joy | Sadness |` with the command.\n\n""" +
+    """> This provides a more direct and accurate method for our systems to track your mood."""
                     )
     embed.add_field(name='\u200b', value='\u200b')
     embed.add_field(name='\u200b', value='\u200b')
@@ -408,6 +405,9 @@ async def resource(ctx):
 
 @bot.command()
 async def history(ctx):
+    """
+    Uploads a graphic sunmmarizing your mood over the past seven days.
+    """
     user_id = ctx.message.author.id
     weekly_moods(get_moods(user_id), user_id)
     await ctx.send(file=discord.File(f'process/{user_id}.png'))
@@ -431,7 +431,8 @@ async def on_guild_join(guild):
     overwrites = {
         guild.default_role: discord.PermissionOverwrite(read_messages=True),
         guild.default_role: discord.PermissionOverwrite(send_messages=False),
-        guild.me: discord.PermissionOverwrite(send_messages=True),
+        guild.pip: discord.PermissionOverwrite(read_messages=True),
+        guild.pip: discord.PermissionOverwrite(send_messages=True),
     }
     await guild.create_text_channel('daily-check-in', overwrites=overwrites)
     channel_id = discord.utils.get(guild.channels, name='daily-check-in').id
@@ -448,7 +449,7 @@ async def on_guild_join(guild):
                           "more aware of your moods, you may be able to better manage your lifestyle choices, " 
                           "make informed health decisions, prevent or avoid triggers of negative moods, " 
                           "and work towards a better quality of life. Best of luck on your mental health journey!" 
-                          "\nTo see a list of commands, type `>commands`!")
+                          "\n\nTo see a list of commands, type `>commands`!")
     embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845318994666848261/845399136249053205/logo_guy.png")
     await channel.send(embed=embed)
 
