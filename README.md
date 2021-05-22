@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/Ti1mmy/CheckinWithme">
-    <img src="resource/logo.png" alt="Logo" width="300" height="400">
+    <img src="examples/logo.png" alt="Logo" width="300" height="400">
   </a>
 
   <h3 align="center">CheckinWithme</h3>
@@ -11,7 +11,8 @@
 
   <p align="center">
     An AI mood-tracking Discord bot powered by
-    <br /> <a href="https://www.datastax.com/products/datastax-astra">DataStax Astra's Apache Cassandra Databases</a> | <a href="https://www.linode.com/">Linode Cloud</a> | <a href="https://cloud.google.com/">Google Cloud</a> | <a href="https://www.domain.com/">Domain.com</a> | <a href="https://www.ibm.com/watson/services/tone-analyzer/">IBM Watson Tone Analyzer</a>
+    <br /> <a href="https://www.datastax.com/products/datastax-astra">DataStax Astra's Apache Cassandra Databases</a> | <a href="https://www.linode.com/">Linode Cloud</a> | <a href="https://cloud.google.com/">Google Cloud</a> 
+    <br /> <a href="https://www.domain.com/">Domain.com</a> | <a href="https://www.ibm.com/watson/services/tone-analyzer/">IBM Watson Tone Analyzer</a>
     <br />
     <br />
     <a href="https://github.com/Ti1mmy/CheckinWithme/blob/main/README.md"><strong>Explore the docs »</strong></a>
@@ -58,9 +59,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Introduction](resource/introduction.png)](https://checkinwithme.tech)
+[![Introduction](examples/introduction.png)](https://checkinwithme.tech)
 
-[![Check-In](resource/check-in-pip.png)](https://checkinwithme.tech)
+[![Check-In](examples/check-in-pip.png)](https://checkinwithme.tech)
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
@@ -194,7 +195,7 @@ Whenever you feel like logging how you feel, you can save an entry by messaging 
 #### History
 Pip logs how you are feeling whenever you check in with it! You can view how you felt over the past seven days by viewing your `>history`!
 
-![History](resource/history_example.png)
+![History](examples/history.png)
 
 #### Miscellaneous
   Rate: 
