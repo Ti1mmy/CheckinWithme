@@ -130,6 +130,7 @@ This is an example of how to list things you need to use the software and how to
     * Bot tokens for Discord can be found in the [Discord Developer Portal](https://discord.com/developers/docs/intro). 
     * Copy [tokens](https://astra.datastax.com/settings/tokens) from DataStax Astra Database into `config/config.json`
    
+   
    ```json
    {
    "_Discord Bot": "Import Bot Tokens below if applicable",
@@ -146,6 +147,7 @@ This is an example of how to list things you need to use the software and how to
     * Create an application using a Reddit account [here](https://www.reddit.com/prefs/apps) to find the required tokens
     * Create an IBM Watson Tone Analyzer instance [here](https://cloud.ibm.com/catalog/services/tone-analyzer) and import the API key and url
    
+
    ```json
    // reddit_keys.json
    {
@@ -213,5 +215,4 @@ Project Link: [https://github.com/Ti1mmy/CheckinWithme](https://github.com/Ti1mm
 
 * Pip's avatar from [Canva](https://www.canva.com/), use granted through Pro subscription
 * [MLH Mental Health Hacks](https://organize.mlh.io/participants/events/6797-mental-health-hacks)
-* []()
 
