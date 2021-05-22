@@ -33,7 +33,7 @@ def weekly_moods(moods: list, uuid: int):
         'anger': (251, 105, 98),
         'fear': (168, 228, 239),
         'joy': (252, 252, 153),
-        'sadness': (168, 228, 239)
+        'sadness': (121, 222, 121)
     }
     lower = 260  # lower is the bottom coord of bar, upper is top but it changes
     upper = 167
