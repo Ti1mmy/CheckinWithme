@@ -12,6 +12,7 @@ ta.set_service_url(watson_setup['url'])
 
 language_tones = ['analytical', 'confident', 'tentative']
 
+
 def watson_tone_analysis(message: str) -> dict:
     results = ta.tone(message).get_result()
     most_confident_score = {'score': 0}

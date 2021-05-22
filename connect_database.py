@@ -9,14 +9,12 @@ import json
 with open('config/config.json', 'r') as config:
     conf = json.load(config)
     
-cloud_config = {}
-cloud_config['secure_connect_bundle'] = conf['secure_connect_bundle']
+cloud_config = {'secure_connect_bundle': conf['secure_connect_bundle']}
 
 auth_provider = PlainTextAuthProvider(conf["CLIENT_ID"], conf["CLIENT_SECRET"]) # authenticate
 cluster = Cluster(cloud=cloud_config, auth_provider=auth_provider)
-session = cluster.connect('my_moods3') # select keyspace
+session = cluster.connect('my_moods3')  # select keyspace
 
-# row = session.execute("select title from movies_and_tv")
 
 def update_mood(uuid: int, mood: str, today: str = strftime("%Y-%m-%d %H:%M:%S", localtime())):
     print(today)
@@ -47,11 +45,10 @@ def get_moods(uuid: int) -> list:
     except Exception:
         return False
     moodlist = [[] for _ in range(7)]
-    datetime_str = []
     current_date = datetime.datetime.now().date()   # gets current date time
 
     for mood in my_moods:
-        mood_date = datetime.datetime.strptime(mood.date__mood[0], "%Y-%m-%d %H:%M:%S").date()   # gets date of entry (no time)
+        mood_date = datetime.datetime.strptime(mood.date__mood[0], "%Y-%m-%d %H:%M:%S").date()  # gets date of entry (no time)
         print(f"Current: {current_date} Mood: {mood_date}")
         diff_days = (current_date - mood_date).days    # finds time diff
         if diff_days and diff_days <= 7:    # everything that is less than 7 days is appended based on diff

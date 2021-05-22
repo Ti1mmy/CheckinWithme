@@ -27,4 +27,3 @@ def google_translate(text, language="en"):
     result['translatedText'] = html.unescape(result['translatedText']) # Replace escaped chars
     # Returns a dictionary containing the original text, translated text, and source language
     return result
-    
