@@ -8,7 +8,7 @@
   <h3 align="center">CheckinWithme</h3>
 
   <p align="center">
-    A mood-tracking Discord bot powered by [DataStax Astra's Apache Cassandra Databases](https://www.datastax.com/products/datastax-astra), [Linode Cloud](https://www.linode.com/), [Domain.com](https://www.domain.com/) & [IBM Watson Tone Analyzer](https://www.ibm.com/watson/services/tone-analyzer/)
+    A mood-tracking Discord bot powered by <a href="https://www.datastax.com/products/datastax-astra" target="_blank">DataStax Astra's Apache Cassandra Databases</a>, <a href="https://www.linode.com/" target="_blank">Linode Cloud</a>, <a href="https://www.domain.com/" target="_blank">Domain.com</a> & <a href="https://www.ibm.com/watson/services/tone-analyzer/" target="_blank">IBM Watson Tone Analyzer</a>
     <br />
     <a href="https://github.com/Ti1mmy/CheckinWithme/blob/main/README.md"><strong>Explore the docs »</strong></a>
     <br />
@@ -63,9 +63,9 @@ Here's a blank template to get started:
 
 ### Built With
 
-* []()
-* []()
-* []()
+* [DataStax Astra Database](https://www.datastax.com/products/datastax-astra)
+* Hosted on [Linode](https://www.linode.com/)
+* [IBM Watson Tone Analyzer](https://www.ibm.com/watson/services/tone-analyzer/)
 
 
 
@@ -83,16 +83,51 @@ This is an example of how to list things you need to use the software and how to
   ```
 
 ### Installation
+        * Requirements: Python `3.9.4`, `pip3`
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/Ti1mmy/CheckinWithme.git
    ```
-2. Install NPM packages
+2. Install Prerequisite Libraries
    ```sh
-   npm install
+   pip install -r requirements.txt
    ```
+3. Configure DataStaxAstra Database
+    * Initialize CQL Database with keyspace `my_moods`
+    * Click on **Connect** in initialized database. Add `secure-connect-database-name.zip` to main directory.
+3. Add tokens to `config.py`
+    * Bot tokens for Discord can be found in the [Discord Developer Portal](https://discord.com/developers/docs/intro). 
+    * Copy [tokens](https://astra.datastax.com/settings/tokens) from DataStax Astra Database into `config.json`
+   
+   ```json
+   {
+  "_Discord Bot": "Import Bot Tokens below if applicable",
+  "token": "",
+  "token_test": "",
 
+  "_DataStacks Astra Keys_": "Import your DataStax Astra Keys below",
+  "secure_connect_bundle": "<PATH-TO-SECURE-CONNECT-BUNDLE.zip>",
+  "CLIENT_ID": "",
+  "CLIENT_SECRET":"",
+   }
+   ```
+4. Add tokens for Reddit and IBM Watson Tone Analysis
+    * Create an application using a Reddit account [here](https://www.reddit.com/prefs/apps) to find the required tokens
+    * Watson 
+   
+   ```json
+   {
+    "_Reddit": "Import Application Tokens Below:",
+    "personal_use": "",
+    "secret": ""
+   }
+   {
+  "Watson Tone Recognition AI": "Import API key and URL below:",
+  "API_key": "",
+  "url": ""
+   }
+   ```
 
 
 <!-- USAGE EXAMPLES -->
@@ -143,7 +178,7 @@ Project Link: [https://github.com/Ti1mmy/CheckinWithme](https://github.com/Ti1mm
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* []()
-* []()
+* [Pip's avatar from Canva](https://www.canva.com/), use granted through Pro subscription
+* [MLH Mental Health Hacks](https://organize.mlh.io/participants/events/6797-mental-health-hacks)
 * []()
 
