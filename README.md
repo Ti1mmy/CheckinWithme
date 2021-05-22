@@ -136,7 +136,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/Ti1mmy/CheckinWithme](https://github.com/Ti1mmy/CheckinWithme)
 
 
 
