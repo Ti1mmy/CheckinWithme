@@ -75,6 +75,7 @@ def update_announcement_list():
 
 # Commands
 
+"""
 @bot.command()
 async def ping(ctx):
     await ctx.send('pong')
@@ -86,7 +87,7 @@ async def pingdm(ctx):
         await ctx.author.send('pong')
     except discord.Forbidden:
         await ctx.send(embed=dmfailed)
-
+"""
 
 @bot.command(pass_context=True)
 async def checkin(ctx,*,message):
@@ -115,7 +116,7 @@ async def checkin(ctx,*,message):
 async def rate(ctx,*,message):
     """
     When the tone reader fails to determine a mood, the user can
-    simply enter their mood to update the database.
+    simply enter their mood and update the database with their mood
     """
     rating = message.strip().lower()
     if rating in ["anger", "fear", 'joy', 'sadness']:
@@ -163,7 +164,7 @@ async def commands(ctx):
 @bot.command()
 async def motivation(ctx):
     """
-    Calls get_motivation() and sends a reddit post from r/GetMotivated
+    Calls get_motivation() and which gets a reddit post from r/GetMotivated
     """
     motivation_url = get_motivation()
     await ctx.send(motivation_url)
@@ -200,6 +201,11 @@ async def history(ctx):
 
 @bot.event
 async def on_guild_join(guild):
+    """
+    Activates as the bot joins a discord server. 
+    It sets its server permissions, creates a channel for daily checkins, sends an introductory
+    message, and starts by sending the daily checkin reminder.
+    """
     overwrites = {
         guild.default_role: discord.PermissionOverwrite(read_messages=True),
         guild.default_role: discord.PermissionOverwrite(send_messages=False),
@@ -236,7 +242,7 @@ async def on_ready():
 
     print('Bot Initialized')
 
-
+"""
 @bot.listen()
 async def on_message(message):
     message_content = message.content
@@ -245,13 +251,16 @@ async def on_message(message):
             await message.channel.send("Hello")    
     except TypeError:
         return None
-
+"""
 
 # Tasks
 
 
 @tasks.loop(seconds=60)
-async def checkin_announcement():   
+async def checkin_announcement():
+    """
+    Sends a reminder every 24 hours to users to remind them to checkin and track their mood
+    """
     for channel in announcement_channels_list:
         embed = discord.Embed(title=f"⭐ Happy {days_of_the_week[day_of_week]}! ⭐", description="> Yesterday is history. Tomorrow is a mystery, but today is a gift! That is why it is called the present.", timestamp=datetime.datetime.utcnow(), color=discord.Color.from_rgb(221, 160, 51))
         embed.add_field(name="Check in With Me!", value=f"{bot_tag.mention}")
