@@ -191,7 +191,9 @@ Whenever you feel like logging how you feel, you can save an entry by messaging 
   * Pip logs your emotions throughout the day! You can let Pip know how you are feeling at any time, not just once per day!
     * e.g. `>checkin Things have been going my way recently, I am grateful for my luck!`
     * par ex. `>checkin Les choses vont dans mon sens ces derniers temps, je suis reconnaissant pour ma chance!`
-   
+
+[![Multilingual](examples/chinese_translated.png)](https://checkinwithme.tech)
+
 #### History
 Pip logs how you are feeling whenever you check in with it! You can view how you felt over the past seven days by viewing your `>history`!
 

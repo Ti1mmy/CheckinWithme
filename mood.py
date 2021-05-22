@@ -39,9 +39,10 @@ def tone_result(text: str):
             return {'tone_id': positive[0]}
         elif tone_google['score'] <= ranges['negative']:
             # Google Sentiment Analysis believes the statement to be negative, but can't pinpoint the tone.
-            # Will return seperate -1 value for response
+            # Will return separate -1 value for response
             return -1            
     elif tone_watson:
         return {'tone_id': tone_watson['tone_id']}
     else:
         return None
+
