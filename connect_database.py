@@ -43,7 +43,7 @@ def update_mood(uuid: int, mood: str, today: str = strftime("%Y-%m-%d %H:%M:%S",
 
 def get_moods(uuid: int) -> list:
     try:
-        my_moods = session.execute(f'select (date, mood) from user{uuid}')
+        my_moods = session.execute(f'SELECT (date, mood) FROM user{uuid}')
     except Exception:
         return False
     moodlist = [[] for _ in range(7)]

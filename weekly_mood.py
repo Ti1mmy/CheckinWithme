@@ -1,4 +1,5 @@
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
+import datetime
 
 
 def draw_block(start, difference, moods):
@@ -26,8 +27,8 @@ def draw_block(start, difference, moods):
     return coord_list, daily_moods
 
 
-def weekly_moods(moods: list, uuid: int):   # uuid is passed as a string
-    colours = {'anger': 'red', 'fear': 'yellow', 'joy': 'aqua', 'sadness': 'blue'}   # defines colours of bars (missing 'confident': 'orange', 'tentative': 'green', 'analytical': 'pink')
+def weekly_moods(moods: list, uuid: int):
+    colours = {'anger': (251, 105, 98), 'fear': (168, 228, 239), 'joy': (252, 252, 153), 'sadness': (168, 228, 239)}   # defines colours of bars (missing 'confident': 'orange', 'tentative': 'green', 'analytical': 'pink')
     lower = 260   # lower is the bottom coord of bar, upper is top but it changes
     upper = 167
     difference = 93   # difference between the 2 sides of the boxes
@@ -42,5 +43,16 @@ def weekly_moods(moods: list, uuid: int):   # uuid is passed as a string
 
             for j in range(len(daily_moods)):
                 back_draw.rectangle((coords[j][0]+1, upper + coords[j+1][1], coords[j+1][0], lower), fill=colours[daily_moods[j]])   # draws each mood for each box
+
+
+    #date text
+    today = datetime.datetime.now().date()
+    initial_coord = 860
+    difference = 134
+    scale = 1.2
+    font = ImageFont.truetype("resource/Roboto-Regular.ttf", 17)
+
+    for i in range(7):
+        back_draw.text((initial_coord - (difference * i) - (i * scale), 270), (today-datetime.timedelta(i+1)).strftime('%m/%d/%Y'), fill=(119, 131, 211), font=font)
 
     back.save(f"process/{uuid}.png")

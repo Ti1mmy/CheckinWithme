@@ -6,3 +6,4 @@ ibm-cloud-sdk-core==3.10.0
 ibm-watson==5.1.0
 Pillow==8.2.0
 requests==2.25.1
+google-cloud-language==2.0.0
