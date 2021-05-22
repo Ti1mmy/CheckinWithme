@@ -8,7 +8,9 @@
   <h3 align="center">CheckinWithme</h3>
 
   <p align="center">
-    A mood-tracking Discord bot powered by <a href="https://www.datastax.com/products/datastax-astra" target="_blank">DataStax Astra's Apache Cassandra Databases</a>, <a href="https://www.linode.com/" target="_blank">Linode Cloud</a>, <a href="https://www.domain.com/" target="_blank">Domain.com</a> & <a href="https://www.ibm.com/watson/services/tone-analyzer/" target="_blank">IBM Watson Tone Analyzer</a>
+    A mood-tracking Discord bot powered by
+    <br /> <a href="https://www.datastax.com/products/datastax-astra" target="_blank">DataStax Astra's Apache Cassandra Databases</a> | <a href="https://www.linode.com/" target="_blank">Linode Cloud</a> | <a href="https://www.domain.com/" target="_blank">Domain.com</a> | <a href="https://www.ibm.com/watson/services/tone-analyzer/" target="_blank">IBM Watson Tone Analyzer</a>
+    <br />
     <br />
     <a href="https://github.com/Ti1mmy/CheckinWithme/blob/main/README.md"><strong>Explore the docs »</strong></a>
     <br />
@@ -83,7 +85,7 @@ This is an example of how to list things you need to use the software and how to
   ```
 
 ### Installation
-        * Requirements: Python `3.9.4`, `pip3`
+* Requirements: Python `3.9.4`, `pip3`
 
 1. Clone the repo
    ```sh
@@ -102,30 +104,30 @@ This is an example of how to list things you need to use the software and how to
    
    ```json
    {
-  "_Discord Bot": "Import Bot Tokens below if applicable",
-  "token": "",
-  "token_test": "",
+   "_Discord Bot": "Import Bot Tokens below if applicable",
+   "token": "",
+   "token_test": "",
 
-  "_DataStacks Astra Keys_": "Import your DataStax Astra Keys below",
-  "secure_connect_bundle": "<PATH-TO-SECURE-CONNECT-BUNDLE.zip>",
-  "CLIENT_ID": "",
-  "CLIENT_SECRET":"",
+   "_DataStacks Astra Keys_": "Import your DataStax Astra Keys below",
+   "secure_connect_bundle": "<PATH-TO-SECURE-CONNECT-BUNDLE.zip>",
+   "CLIENT_ID": "",
+   "CLIENT_SECRET":"",
    }
    ```
 4. Add tokens for Reddit and IBM Watson Tone Analysis
     * Create an application using a Reddit account [here](https://www.reddit.com/prefs/apps) to find the required tokens
-    * Watson 
+    * Create an IBM Watson Tone Analyzer instance [here](https://cloud.ibm.com/catalog/services/tone-analyzer) and import the API key and url
    
    ```json
    {
-    "_Reddit": "Import Application Tokens Below:",
-    "personal_use": "",
-    "secret": ""
+   "_Reddit": "Import Application Tokens Below:",
+   "personal_use": "",
+   "secret": ""
    }
    {
-  "Watson Tone Recognition AI": "Import API key and URL below:",
-  "API_key": "",
-  "url": ""
+   "Watson Tone Recognition AI": "Import API key and URL below:",
+   "API_key": "",
+   "url": ""
    }
    ```
 
@@ -178,7 +180,7 @@ Project Link: [https://github.com/Ti1mmy/CheckinWithme](https://github.com/Ti1mm
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* [Pip's avatar from Canva](https://www.canva.com/), use granted through Pro subscription
+* Pip's avatar from [Canva](https://www.canva.com/), use granted through Pro subscription
 * [MLH Mental Health Hacks](https://organize.mlh.io/participants/events/6797-mental-health-hacks)
 * []()
 
