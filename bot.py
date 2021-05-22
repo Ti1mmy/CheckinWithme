@@ -204,7 +204,7 @@ async def on_guild_join(guild):
     """
     Activates as the bot joins a discord server. 
     It sets its server permissions, creates a channel for daily checkins, sends an introductory
-    message, and starts by sending the daily checkin reminder.
+    message, and sends the first daily checkin reminder.
     """
     overwrites = {
         guild.default_role: discord.PermissionOverwrite(read_messages=True),
