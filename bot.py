@@ -178,17 +178,10 @@ async def resource(ctx):
 
 
 @bot.command()
-async def graph(ctx):
-    user_id = ctx.message.author.id
-    # graphing.get_graph(user_id)
-    ctx.send(file=discord.File(f'process/{user_id}.png'))
-
-
-@bot.command()
 async def history(ctx):
-    user_id = "1215212898778218496"
+    user_id = ctx.message.author.id
     weekly_moods(get_moods(user_id), user_id)
-    await ctx.send(file=discord.File(f'process/{user_id}.png'))   # might need to change for dms
+    await ctx.send(file=discord.File(f'process/{user_id}.png'))
     os.remove(f'process/{user_id}.png')
 
 # Events
