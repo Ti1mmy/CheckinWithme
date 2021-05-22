@@ -8,7 +8,7 @@
   <h3 align="center">CheckinWithme</h3>
 
   <p align="center">
-    project_description
+    A mood-tracking Discord bot powered by [DataStax Astra's Apache Cassandra Databases](https://www.datastax.com/products/datastax-astra), [Linode Cloud](https://www.linode.com/), [Domain.com](https://www.domain.com/) & [IBM Watson Tone Analyzer](https://www.ibm.com/watson/services/tone-analyzer/)
     <br />
     <a href="https://github.com/Ti1mmy/CheckinWithme/blob/main/README.md"><strong>Explore the docs »</strong></a>
     <br />

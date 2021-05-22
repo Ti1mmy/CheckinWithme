@@ -48,12 +48,11 @@ def get_moods(uuid: int) -> list:
         return False
     moodlist = [[] for _ in range(7)]
     datetime_str = []
-    current_date = datetime.datetime.now().date()
+    current_date = datetime.datetime.now().date()   # gets current date time
 
     for mood in my_moods:
-        mood_date = datetime.datetime.strptime(mood.date__mood[0], "%Y-%m-%d %H:%M:%S").date()
-        diff_days = (current_date - mood_date).days
-        print(diff_days)
+        mood_date = datetime.datetime.strptime(mood.date__mood[0], "%Y-%m-%d %H:%M:%S").date()   # gets date of entry (no time)
+        diff_days = (current_date - mood_date).days    # finds time diff
 
         if diff_days <= 7 and diff_days != 0: 
             moodlist[diff_days-1].append(mood.date__mood[1])

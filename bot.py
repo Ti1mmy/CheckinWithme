@@ -112,6 +112,9 @@ async def checkin(ctx,*,message):
 
 @bot.command(pass_context=True)
 async def rate(ctx,*,message):
+    """
+    
+    """
     rating = message.strip().lower()
     if rating in ["anger", "fear", 'joy', 'sadness']:
         tone = tone_result(rating)
@@ -126,13 +129,13 @@ async def rate(ctx,*,message):
         embed.add_field(name="Example", value="If I'm feeling happy, I would `>rate Joy` 😊")
         embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/845318994666848261/845399136249053205/logo_guy.png")
         await ctx.send(embed=embed)
-    # save_result(rating)
-    
-    # do something about mood
 
 
-@bot.command(pass_context=True) # Shows the list of commands the user can use
+@bot.command(pass_context=True)
 async def commands(ctx):
+    """
+    Sends a list of commands the user can use
+    """
     embed = discord.Embed(title="List of Commands", description="To use these commands, type '`>`' with the corresponding command.", timestamp=datetime.datetime.utcnow(), color=discord.Color.from_rgb(226, 83, 47))
     embed.add_field(name="checkin", value="""> Let me know how you're feeling with the 'checkin' command! For instance, you could type `>checkin I'm feeling pretty happy today` or any other feelings you have.\n\n""" + 
                     """> Your mood will then be categorized into one of four categories (anger, fear, joy, and sadness) and will be compiled in a weekly summary for you to view at anytime.""")
@@ -157,7 +160,9 @@ async def commands(ctx):
 
 @bot.command()
 async def motivation(ctx):
-    
+    """
+    Calls get_motivation() and sends a reddit post from r/GetMotivated
+    """
     motivation_url = get_motivation()
     await ctx.send(motivation_url)
 
@@ -165,7 +170,7 @@ async def motivation(ctx):
 @bot.command()
 async def resource(ctx):
     """
-    Returns a random resource from a list of mental health resources
+    Sends a random resource from a list of mental health resources
     """
     resources = [
         "https://www.mindful.org/",
