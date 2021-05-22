@@ -27,5 +27,3 @@ res = rq.post('https://www.reddit.com/api/v1/access_token', auth=auth, data=data
 TOKEN = res.json()['access_token']
 
 headers = {**headers, **{'Authorization': f"bearer {TOKEN}"}}  # adds auth token to headers
-
-get_motivation()
