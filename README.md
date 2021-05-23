@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/Ti1mmy/CheckinWithme">
+  <a href="https://checkinwithme.tech/">
     <img src="examples/logo.png" alt="Logo" width="300" height="400">
   </a>
 
