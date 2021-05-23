@@ -261,7 +261,7 @@ Timothy Zheng - [Linkedin](https://www.linkedin.com/in/timothy-zheng21/) - tim12
 Yang Xu - [Linkedin](https://www.linkedin.com/in/yang-xu-584b0920b/) - boyangfu1991@gmail.com
 
 
-Devpost Link: [https://github.com/Ti1mmy/CheckinWithme](https://github.com/Ti1mmy/CheckinWithme)
+Devpost Link: [https://devpost.com/software/check-in-with-me](https://devpost.com/software/check-in-with-me)
 
 
 
