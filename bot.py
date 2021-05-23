@@ -414,11 +414,6 @@ async def history(ctx):
     os.remove(f'process/{user_id}.png')
 
 
-@bot.command()
-async def creeper(ctx):
-    await ctx.send("aww man")
-
-
 # Events
 
 @bot.event
