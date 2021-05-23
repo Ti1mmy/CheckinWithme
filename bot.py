@@ -426,8 +426,8 @@ async def on_guild_join(guild):
     overwrites = {
         guild.default_role: discord.PermissionOverwrite(read_messages=True),
         guild.default_role: discord.PermissionOverwrite(send_messages=False),
-        guild.pip: discord.PermissionOverwrite(read_messages=True),
-        guild.pip: discord.PermissionOverwrite(send_messages=True),
+        guild.me: discord.PermissionOverwrite(read_messages=True),
+        guild.me: discord.PermissionOverwrite(send_messages=True),
     }
     await guild.create_text_channel('daily-check-in', overwrites=overwrites)
     channel_id = discord.utils.get(guild.channels, name='daily-check-in').id
