@@ -6,7 +6,7 @@
   </a>
 
   <h3 align="center">CheckinWithme</h3>
-
+  <h4 align="center"><a href="https://devpost.com/software/check-in-with-me" target="_blank">Hackathon Submission for Mental Health Hacks 2021</a></h4>
   <h4 align="center"><a href="https://checkinwithme.tech/" target="_blank">» Invite me!</a></h4>
 
   <p align="center">
@@ -80,7 +80,7 @@ Here's a blank template to get started:
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
+To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
@@ -184,7 +184,7 @@ This is an example of how to list things you need to use the software and how to
 ## Usage
 
 #### Joining
-When Pip joins your server, it will create a read-only channel called `#daily-check-in`. Every 24 hours, Pip will make an announcment reminding you to message it with a quick message on how your day is going so far.
+When Pip joins your server, it will create a read-only channel called `#daily-check-in`. Every 24 hours, Pip will make an announcement reminding you to message it with a quick message on how your day is going so far.
 #### Check-In
 Whenever you feel like logging how you feel, you can save an entry by messaging Pip using the `>checkin` command! Type out your message after the `>checkin` command for Pip to analyze and log how you feel. 
   * If you feel more comfortable expressing how you feel in your own language, Pip is completely able to understand your language as well as responding back using the **same language**!
@@ -215,7 +215,7 @@ Pip logs how you are feeling whenever you check in with it! You can view how you
 
 Optimizations:
   * Replace long if-else trees with native switch-statements upon Python `3.10` release.
-  * Move embeds from `bot.py` to a seperate file.
+  * Move embeds from `bot.py` to a separate file.
 
 Features:
   * Voice Recognition in `>checkin`
@@ -223,7 +223,7 @@ Features:
   * Interactive Web UI to explore mood history in more depth
   * Streak-detection
     * Identifies streaks in good moods and compliments users
-  * Thoughts/Graditude Journal Support
+  * Thoughts/Gratitude Journal Support
     * Stores & Analyzes Journals, easily accessible on future Web UI
   * Chatbot feature
     * Allows users to casually converse with the b
