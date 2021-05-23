@@ -129,7 +129,7 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    pip install -r requirements.txt
    ```
-3. Configure [DataStaxAstra Database](https://astra.datastax.com/)
+3. Configure [DataStaxAstra Cassandra Database](https://astra.datastax.com/)
     * Initialize CQL Database with keyspace `my_moods`
     * Click on **Connect** in the initialized database. Download and add `secure-connect-database-name.zip` to main directory.
 4. Configure [Google Cloud Services](https://cloud.google.com/)
