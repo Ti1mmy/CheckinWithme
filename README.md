@@ -125,18 +125,22 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    git clone https://github.com/Ti1mmy/CheckinWithme.git
    ```
-2. Install Prerequisite Libraries
+2. `cd` into repo directory
+   ```
+   cd CheckinWithme
+   ```
+3. Install Prerequisite Libraries
    ```sh
    pip3 install -r requirements.txt
    ```
-3. Configure [DataStaxAstra Cassandra Database](https://astra.datastax.com/)
+4. Configure [DataStaxAstra Cassandra Database](https://astra.datastax.com/)
     * Initialize CQL Database with keyspace `my_moods`
     * Click on **Connect** in the initialized database. Download and add `secure-connect-database-name.zip` to main directory.
-4. Configure [Google Cloud Services](https://cloud.google.com/)
+5. Configure [Google Cloud Services](https://cloud.google.com/)
     * Create Service Account with `owner` role
     * Enable [Cloud Translation API](https://console.cloud.google.com/marketplace/product/google/translate.googleapis.com)
     * Enable [Cloud Natural Language API](https://console.cloud.google.com/marketplace/product/google/language.googleapis.com)
-5. Add tokens to `config/config.json`
+6. Add tokens to `config/config.json`
     * Bot tokens for Discord can be found in the [Discord Developer Portal](https://discord.com/developers/docs/intro). 
     * Copy [tokens](https://astra.datastax.com/settings/tokens) from DataStax Astra Database into `config/config.json`
     * Download Google Cloud [Key JSON](https://console.cloud.google.com/apis/credentials/) to `/config/`
