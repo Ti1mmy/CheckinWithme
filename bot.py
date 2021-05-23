@@ -15,7 +15,7 @@ import os
 
 # ---
 
-TEST = False
+TEST = True
 
 announcement_channels_list = []
 
@@ -69,16 +69,10 @@ def update_announcement_list():
     global announcement_channels_list
     announcement_channels_list = []
     for guild in bot.guilds:
-        print(guild)
         for channel in guild.channels:
-            print(channel)
-            print(channel.type)
-            print(type(channel.type))
             if str(channel.type) == 'text':
-                print(channel)
                 if str(channel.name) == "daily-check-in":
                     announcement_channels_list.append(channel)
-    print(announcement_channels_list)
 
 
 def tone_response(tone, language="en"):
