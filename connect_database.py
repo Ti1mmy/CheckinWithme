@@ -13,7 +13,7 @@ cloud_config = {'secure_connect_bundle': conf['secure_connect_bundle']}
 
 auth_provider = PlainTextAuthProvider(conf["CLIENT_ID"], conf["CLIENT_SECRET"]) # authenticate
 cluster = Cluster(cloud=cloud_config, auth_provider=auth_provider)
-session = cluster.connect('my_moods3')  # select keyspace
+session = cluster.connect('my_moods')  # select keyspace
 
 
 def update_mood(uuid: int, mood: str, today: str = strftime("%Y-%m-%d %H:%M:%S", localtime())):
