@@ -18,7 +18,7 @@
     <a href="https://github.com/Ti1mmy/CheckinWithme/blob/main/README.md"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Ti1mmy/CheckinWithme">View Demo</a>
+    <a href="https://youtu.be/3dEZM6ImQrQ">View Demo</a>
     ·
     <a href="https://github.com/Ti1mmy/CheckinWithme/issues">Report Bug</a>
     ·
