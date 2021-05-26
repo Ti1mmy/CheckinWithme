@@ -63,9 +63,9 @@
 
 [![Check-In](examples/check-in-pip.png)](https://checkinwithme.tech)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
+Pip is a Discord bot that aims to improve mental health through a multitude of functions. By combining IBM Watson’s tone analyzer and Google Cloud’s natural language processing sentiment, Pip can analyze messages and accurately determine the user's mood. Using the mood detected, Pip then responds accordingly, providing the user with support in the form of an uplifting message and the appropriate resources to help with how they are feeling. The user can also view their moods for the last 7 days in an easy-to-view graphic, which will help them identify things in their life that affect their mental well-being and make adjustments.
+
+Alongside the mood tracking feature, Pip also offers a variety of other mental health services. Every 24 hours, Pip will send a message to give the user a mood boost and remind them to log their emotions. In case they feel down, Pip also has a motivation command that will automatically retrieve a motivational post from a never-ending list of options hand-curated by thousands of users. Finally, Pip can provide mental health resources on command if the user needs some more targeted resources.
 
 
 ### Built With
