@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from motivation import get_motivation
+from motivation import get_motivation, refresh_reddit_token
 from connect_database import update_mood, get_moods
 from mood import tone_result
 from weekly_mood import weekly_moods
@@ -463,11 +463,18 @@ async def on_ready():
     global bot_tag
     bot_tag = bot.user
     update_announcement_list()
-
+    refresh_reddit_token()
     print('Bot Initialized')
 
 
 # Tasks
+
+@tasks.loop(hours=1)
+async def reddit_token():
+    """
+    refreshes Reddit access token every hour
+    """
+    refresh_reddit_token()
 
 
 @tasks.loop(hours=24)
@@ -492,4 +499,6 @@ async def checkin_announcement():
 
 
 checkin_announcement.start()
+reddit_token.start()
+
 bot.run(token)
