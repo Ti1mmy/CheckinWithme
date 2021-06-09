@@ -4,6 +4,7 @@ from connect_database import update_mood, get_moods
 from mood import tone_result
 from weekly_mood import weekly_moods
 from google_translate import google_translate
+from watson import reload_watson_api
 
 import discord
 from discord.ext import commands, tasks
@@ -464,17 +465,19 @@ async def on_ready():
     bot_tag = bot.user
     update_announcement_list()
     refresh_reddit_token()
+    reload_watson_api()
     print('Bot Initialized')
 
 
 # Tasks
 
 @tasks.loop(hours=1)
-async def reddit_token():
+async def reload_tokens():
     """
-    refreshes Reddit access token every hour
+    refreshes Reddit & Watson access token every hour
     """
     refresh_reddit_token()
+    reload_watson_api()
 
 
 @tasks.loop(hours=24)
@@ -499,6 +502,6 @@ async def checkin_announcement():
 
 
 checkin_announcement.start()
-reddit_token.start()
+reload_tokens.start()
 
 bot.run(token)
