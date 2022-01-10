@@ -3,15 +3,21 @@ from cassandra.cluster import Cluster, ExecutionProfile, EXEC_PROFILE_DEFAULT
 from cassandra.policies import WhiteListRoundRobinPolicy, DowngradingConsistencyRetryPolicy
 from cassandra.query import tuple_factory
 from time import strftime, localtime
+from dotenv import load_dotenv
 import datetime
+import os
 import json
+
+load_dotenv()
+client_id = os.environ.get("ASTRA_DB_ID")
+client_secret = os.environ.get("ASTRA_DB_APPLICATION_TOKEN")
 
 with open('config/config.json', 'r') as config:
     conf = json.load(config)
     
 cloud_config = {'secure_connect_bundle': conf['secure_connect_bundle']}
 
-auth_provider = PlainTextAuthProvider(conf["CLIENT_ID"], conf["CLIENT_SECRET"]) # authenticate
+auth_provider = PlainTextAuthProvider(client_id, client_secret) # authenticate
 cluster = Cluster(cloud=cloud_config, auth_provider=auth_provider)
 session = cluster.connect('my_moods')  # select keyspace
 

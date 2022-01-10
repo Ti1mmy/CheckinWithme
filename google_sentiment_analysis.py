@@ -4,11 +4,10 @@ import os
 import json
 # Explicitly use service account credentials by specifying the private key
 # file.
+from dotenv import load_dotenv
+load_dotenv()
 
-with open('config/config.json') as json_file:
-    config = json.load(json_file)
-
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]=config["G_CLOUD_SERVICE_KEYFILE"]
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
 
 # Instantiates a client
 client = language_v1.LanguageServiceClient()

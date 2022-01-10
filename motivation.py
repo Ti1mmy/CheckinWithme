@@ -1,19 +1,23 @@
 import json
 import random
 import requests as rq
+from dotenv import load_dotenv
+import os
 
-with open("config/reddit_keys.json") as temp_file:
-    reddit_keys = json.load(temp_file)
-    
+load_dotenv()
+app_key = os.environ.get("REDDIT_APP")
+secret = os.environ.get("REDDIT_SECRET")
+user = os.environ.get("REDDIT_USER")
+password = os.environ.get("REDDIT_PASS")
 
 
 def refresh_reddit_token():
     global headers
-    auth = rq.auth.HTTPBasicAuth(reddit_keys['personal_use'], reddit_keys['secret'])  # auth
+    auth = rq.auth.HTTPBasicAuth(app_key, secret)  # auth
 
     data = {'grant_type': 'password',
-            'username': '',
-            'password': ''}  # Add Reddit Login Creds
+            'username': user,
+            'password': password}  # Add Reddit Login Creds
 
     headers = {'User-Agent': 'MyBot/0.0.1'}
 

@@ -1,16 +1,20 @@
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from ibm_watson import ToneAnalyzerV3
-import json
+
+from dotenv import load_dotenv
+
+import os
 
 
-with open('config/watson.json') as json_file:
-    watson_setup = json.load(json_file)
+load_dotenv()
+api_key = os.environ.get("WATSON_KEY")
+watson_url = os.environ.get("WATSON_URL")
     
 def reload_watson_api():   
     global ta
-    watson_authenticator = IAMAuthenticator(watson_setup['API_key'])   # authentication
+    watson_authenticator = IAMAuthenticator(api_key)   # authentication
     ta = ToneAnalyzerV3(version='2017-09-21', authenticator=watson_authenticator)   # sets up analyzer instance
-    ta.set_service_url(watson_setup['url'])
+    ta.set_service_url(watson_url)
 
 
 language_tones = ['analytical', 'confident', 'tentative']

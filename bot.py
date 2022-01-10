@@ -6,6 +6,7 @@ from weekly_mood import weekly_moods
 from google_translate import google_translate
 from watson import reload_watson_api
 
+from dotenv import load_dotenv
 import discord
 from discord.ext import commands, tasks
 
@@ -15,23 +16,10 @@ import random
 import os
 
 # ---
+load_dotenv()
 
-TEST = True
-
+token = os.environ.get("DISCORD_SECRET")
 announcement_channels_list = []
-
-try:
-    with open('config/config.json') as config_file:
-        conf = json.load(config_file)
-    if conf['token'] is None:
-        raise Exception
-    token = conf['token']
-    if TEST:
-        token = conf['token_test']
-
-
-except Exception:
-    print("Failed to open config, check it exists and is valid.")
 
 bot = commands.Bot(command_prefix='>', description="CheckinWithMe")
 
