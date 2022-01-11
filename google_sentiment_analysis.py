@@ -1,7 +1,6 @@
 # Imports the Google Cloud client library
 from google.cloud import language_v1
 import os
-import json
 # Explicitly use service account credentials by specifying the private key
 # file.
 from dotenv import load_dotenv

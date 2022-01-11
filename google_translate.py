@@ -4,10 +4,10 @@ import os
 import six
 import html
 
-with open('config/config.json') as json_file:
-    config = json.load(json_file)
+from dotenv import load_dotenv
+load_dotenv()
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]=config["G_CLOUD_SERVICE_KEYFILE"]
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
 
 
 def google_translate(text, language="en"):
