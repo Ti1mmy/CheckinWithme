@@ -1,8 +1,9 @@
 import json
 import random
+import os
+
 import requests as rq
 from dotenv import load_dotenv
-import os
 
 load_dotenv()
 app_key = os.environ.get("REDDIT_APP")
