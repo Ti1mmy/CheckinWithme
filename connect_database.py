@@ -10,7 +10,7 @@ import json
 
 load_dotenv()
 client_id = os.environ.get("ASTRA_DB_ID")
-client_secret = os.environ.get("ASTRA_DB_APPLICATION_TOKEN")
+client_secret = os.environ.get("ASTRA_DB_SECRET")
 
 with open('config/config.json', 'r') as config:
     conf = json.load(config)
