@@ -11,7 +11,7 @@
 
   <p align="center">
     An AI mood-tracking Discord bot powered by
-    <br /> <a href="https://www.datastax.com/products/datastax-astra">DataStax Astra's Apache Cassandra Databases</a> | <a href="https://www.linode.com/">Linode Cloud</a> | <a href="https://cloud.google.com/">Google Cloud</a> 
+    <br /> <a href="https://www.datastax.com/products/datastax-astra">DataStax Astra's Apache Cassandra Databases</a> | <a href="https://www.heroku.com/">Heroku CI/CD</a> | <a href="https://cloud.google.com/">Google Cloud</a> 
     <br /> <a href="https://www.domain.com/">Domain.com</a> | <a href="https://www.ibm.com/watson/services/tone-analyzer/">IBM Watson Tone Analyzer</a>
     <br />
     <br />
@@ -71,7 +71,7 @@ Alongside the mood tracking feature, Pip also offers a variety of other mental h
 ### Built With
 
 * [DataStax Astra Database](https://www.datastax.com/products/datastax-astra)
-* Hosted on [Linode](https://www.linode.com/)
+* Hosted on [Heroku](https://www.heroku.com/)
 * [Google Cloud Translation/Natural Language Apis](https://cloud.google.com/)
 * [IBM Watson Tone Analyzer](https://www.ibm.com/watson/services/tone-analyzer/)
 
@@ -274,6 +274,5 @@ Devpost Link: [https://devpost.com/software/check-in-with-me](https://devpost.co
 * Pip's avatar from [Canva](https://www.canva.com/), use granted through Pro subscription
 * [MLH Mental Health Hacks](https://organize.mlh.io/participants/events/6797-mental-health-hacks)
 * [Google Cloud Credits from Google](https://cloud.google.com/)
-* [Linode Credits from Linode](https://www.linode.com/)
 * [DataStax Astra Credits by DataStax Astra](https://www.datastax.com/products/datastax-astra)
 
