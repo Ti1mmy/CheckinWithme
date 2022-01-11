@@ -1,5 +1,5 @@
 {
-  "_info": "Config system deprecated, add as environment variables!"
+  "_info": "Config system deprecated, add as environment variables!",
   "_Discord Bot": "Import Bot Tokens below if applicable",
   "token": "",
   "token_test": "",
