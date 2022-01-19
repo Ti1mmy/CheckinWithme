@@ -1,5 +1,5 @@
 {
-  "_DataStax Astra Connect Bundle",
+  "_DataStax Astra Connect Bundle": "",
   "secure_connect_bundle": "./config/secure-connect-checkinwithme.zip",
   
   "_info": "Config system deprecated, add rest as environment variables!",
