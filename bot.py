@@ -469,6 +469,15 @@ async def reload_tokens():
 
 
 @tasks.loop(hours=24)
+async def keep_db_awake():
+    """
+    sends trivial request to database to prevent hibernation
+    """
+    update_mood(0, "")
+    get_moods(0)
+
+
+@tasks.loop(hours=24)
 async def checkin_announcement():
     """
     Sends a reminder every 24 hours to users to remind them to checkin and track their mood
@@ -491,5 +500,6 @@ async def checkin_announcement():
 
 checkin_announcement.start()
 reload_tokens.start()
+keep_db_awake.start()
 
 bot.run(token)
