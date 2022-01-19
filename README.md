@@ -139,48 +139,57 @@ To get a local copy up and running, follow these simple steps.
     * Create Service Account with `owner` role
     * Enable [Cloud Translation API](https://console.cloud.google.com/marketplace/product/google/translate.googleapis.com)
     * Enable [Cloud Natural Language API](https://console.cloud.google.com/marketplace/product/google/language.googleapis.com)
-6. Add tokens to `config/config.json`
+6. **-- DEPRECATED --** ~~Add tokens to `config/config.json`~~
     * Bot tokens for Discord can be found in the [Discord Developer Portal](https://discord.com/developers/docs/intro). 
     * Copy [tokens](https://astra.datastax.com/settings/tokens) from DataStax Astra Database into `config/config.json`
     * Download Google Cloud [Key JSON](https://console.cloud.google.com/apis/credentials/) to `/config/`
     * Include path to Google Cloud JSON in `config.json`
-    
-   
-   
+
+
+    * **NEW:** Only add `secure_connect_bundle` path into `congif/config.json`
+
    ```json
-   {
-   "_Discord Bot": "Import Bot Tokens below if applicable",
-   "token": "",
-   "token_test": "",
+    {
+      "_DataStax Astra Connect Bundle",
+      "secure_connect_bundle": "./config/secure-connect-checkinwithme.zip",
+      
+      "_info": "Config system deprecated, add rest as environment variables!",
+      "_Discord Bot": "Import Bot Tokens below if applicable",
+      "token": "",
+      "token_test": "",
 
-   "_DataStacks Astra Keys_": "Import your DataStax Astra Keys below",
-   "secure_connect_bundle": "<PATH-TO-SECURE-CONNECT-BUNDLE.zip>",
-   "CLIENT_ID": "",
-   "CLIENT_SECRET":"",
+      "_DataStacks Astra Keys_": "Import your DataStax Astra Keys below",
+      
+      "CLIENT_ID": "",
+      "CLIENT_SECRET":"",
 
-   "G_CLOUD_SERVICE_KEYFILE": "config/your-google-cloud-service-keyfile.json",
-   }
+      "G_CLOUD_SERVICE_KEYFILE": "config/your-google-cloud-service-keyfile.json"
+    }
    ```
-6. Add tokens for Reddit and IBM Watson Tone Analysis to `config/reddit_keys.json`, `config/watson.json`
+7. **-- DEPRECATED --** ~~Add tokens for Reddit and IBM Watson Tone Analysis to `config/reddit_keys.json`, `config/watson.json`~~
     * Create an application using a Reddit account [here](https://www.reddit.com/prefs/apps) to find the required tokens
     * Create an IBM Watson Tone Analyzer instance [here](https://cloud.ibm.com/catalog/services/tone-analyzer) and import the API key and url
-   
+    
 
-   ```json
-   // reddit_keys.json
-   {
-   "_Reddit": "Import Application Tokens Below:",
-   "personal_use": "",
-   "secret": ""
-   }
-
-   // watson.json
-   {
-   "Watson Tone Recognition AI": "Import API key and URL below:",
-   "API_key": "",
-   "url": ""
-   }
-   ```
+    * **NEW**: Add keys according to the **next step**
+8. **NEW - 18 January 2022**: Add all keys to `PATH` instead!
+* NB: If hosting on Heroku, use [this buildpack](https://github.com/gerywahyunugraha/heroku-google-application-credentials-buildpack).
+```sh
+export ASTRA_DB_APPLICATION_TOKEN=<token>;
+export ASTRA_DB_ID=<Astra DB id>;
+export ASTRA_DB_KEYSPACE=my_moods;
+export ASTRA_DB_REGION=<region>;
+export ASTRA_DB_SECRET=<secret>;
+export DISCORD_SECRET=<discord bot token>;
+export GOOGLE_APPLICATION_CREDENTIALS=google-credentials.json;
+export GOOGLE_CREDENTIALS=<contents of json>;
+export REDDIT_USER=<reddit username>;
+export REDDIT_PASS=<reddit password>;
+export REDDIT_APP=<APP id>;
+export REDDIT_SECRET=<reddit secret>;
+export WATSON_KEY=<ibm watson key>;
+export WATSON_URL=<ibm watson url>
+```
 
 
 <!-- USAGE EXAMPLES -->
