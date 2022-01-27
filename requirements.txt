@@ -1,6 +1,6 @@
 cassandra-driver==3.25.0
 DateTime==4.3
-discord==1.0.1
+discord==1.7.3
 discord.py==1.7.2
 ibm-cloud-sdk-core==3.10.0
 ibm-watson==5.1.0
