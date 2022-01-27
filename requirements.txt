@@ -5,7 +5,7 @@ discord.py==1.7.2
 ibm-cloud-sdk-core==3.10.0
 ibm-watson==5.1.0
 Pillow==9.0.0
-requests==2.25.1
+requests==2.27.1
 google-cloud-language==2.0.0
 google-cloud-translate==2.0.1
 python-dotenv==0.19.2
