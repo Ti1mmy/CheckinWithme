@@ -8,4 +8,4 @@ Pillow==9.0.1
 requests==2.27.1
 google-cloud-language==2.4.1
 google-cloud-translate==3.7.2
-python-dotenv==0.19.2
+python-dotenv==0.20.0
