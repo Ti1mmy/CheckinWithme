@@ -6,7 +6,7 @@
   </a>
 
   <h3 align="center">CheckinWithme</h3>
-  <h4 align="center"><a href="https://devpost.com/software/check-in-with-me" target="_blank">Hackathon Submission for Mental Health Hacks 2021</a></h4>
+  <h4 align="center"><a href="https://devpost.com/software/check-in-with-me" target="_blank">(Winning!!) Hackathon Submission for Mental Health Hacks 2021</a></h4>
   <h4 align="center"><a href="https://checkinwithme.tech/" target="_blank">» Invite me!</a></h4>
 
   <p align="center">
