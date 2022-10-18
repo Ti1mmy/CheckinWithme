@@ -23,6 +23,12 @@ session = cluster.connect('my_moods')  # select keyspace
 
 
 def update_mood(uuid: int, mood: str, today: str = strftime("%Y-%m-%d %H:%M:%S", localtime())):
+    try:
+        session.execute(f'SELECT (date, mood) FROM user{uuid}')
+    except Exception:
+        pass
+    
+    
     session.execute(f"""
                     CREATE TABLE IF NOT EXISTS user{uuid} (
                         date text,
