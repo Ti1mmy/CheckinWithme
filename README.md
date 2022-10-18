@@ -268,7 +268,7 @@ Eric Ji - [Linkedin](https://www.linkedin.com/in/eric-ji-0a8793212/) - eric868.j
 
 Katherine Li [Linkedin](https://www.linkedin.com/in/k-atherine-li/) - katherineli03.kkl@gmail.com
 
-Timothy Zheng - [Linkedin](https://www.linkedin.com/in/timothy-zheng21/) - tim123643@gmail.com
+Timothy Zheng - [Linkedin](https://www.linkedin.com/in/timothyzheng/) - tim123643@gmail.com
 
 Yang Xu - [Linkedin](https://www.linkedin.com/in/yang-xu-584b0920b/) - boyangfu1991@gmail.com
 
