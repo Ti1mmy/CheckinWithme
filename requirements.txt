@@ -1,5 +1,5 @@
 cassandra-driver==3.25.0
-DateTime==4.4
+DateTime==4.9
 discord==1.7.3
 discord.py==1.7.3
 ibm-watson==6.1.0
